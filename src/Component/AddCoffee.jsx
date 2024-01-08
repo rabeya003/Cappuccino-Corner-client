@@ -3,7 +3,17 @@ const AddCoffee = () => {
     <div className="bg-[#F4F3F0] my-24 p-24 max-w-[1320px] mx-auto">
       {/* header */}
       <div>
-        <h3 className="text-3xl text-center font-extrabold">Add a coffee</h3>
+        <div className="flex justify-center items-center gap-3">
+          {" "}
+          <h3 className="text-5xl text-center font-extrabold font-rancho">
+            Add New Coffee
+          </h3>
+          <img
+            className="w-16"
+            src="https://i.ibb.co/56Xwkx5/coffee.png"
+            alt=""
+          />
+        </div>
         <p className="text-center m-6">
           It is a well-established truth that a reader will be distracted from a
           page's layout by its <br></br> readable content. The reason for using
