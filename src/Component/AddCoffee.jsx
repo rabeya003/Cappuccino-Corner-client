@@ -1,4 +1,16 @@
 const AddCoffee = () => {
+  const handleAddCoffee = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    console.log(name, chef, supplier, taste, category, details);
+  };
+
   return (
     <div className="bg-[#F4F3F0] my-24 p-24 max-w-[1320px] mx-auto">
       {/* header */}
@@ -16,14 +28,13 @@ const AddCoffee = () => {
         </div>
         <p className="text-center m-6">
           It is a well-established truth that a reader will be distracted from a
-          page's layout by its <br></br> readable content. The reason for using
-          Lorem Ipsum instead of Content is that the <br></br>former has a more
-          or less normal distribution of letters.
+          page&rsquo;s layout by its <br></br> readable content. The reason for
+          using Lorem Ipsum instead of Content is that the <br></br>former has a
+          more or less normal distribution of letters.
         </p>
       </div>
-
       {/* form */}
-      <form>
+      <form onSubmit={handleAddCoffee}>
         <div>
           {" "}
           <div className="md:flex">
