@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
     e.preventDefault();
@@ -8,7 +9,30 @@ const AddCoffee = () => {
     const taste = form.taste.value;
     const category = form.category.value;
     const details = form.details.value;
-    console.log(name, chef, supplier, taste, category, details);
+    const img = form.img.value;
+    const newCoffee = { name, chef, supplier, taste, category, details, img };
+
+    // Send data to the server
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "Coffee added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+        e.target.reset();
+      });
   };
 
   return (
@@ -44,6 +68,8 @@ const AddCoffee = () => {
               </label>
               <label className="input-group">
                 <input
+                  required
+                  autoComplete="off"
                   type="text"
                   name="name"
                   placeholder="Coffee name"
@@ -133,21 +159,18 @@ const AddCoffee = () => {
             </div>
           </div>
           {/* IMAGE */}
-          <div className="md:flex">
-            {/* card-1 for image */}
-            <div className="form-control w-full ">
-              <label className="label">
-                <span className="label-text">Photo Url</span>
-              </label>
-              <label className="input-group">
-                <input
-                  type="url"
-                  name="img"
-                  placeholder="Enter photo-URL"
-                  className="input input-bordered w-full "
-                />
-              </label>
-            </div>
+          <div className="form-control w-full md:flex">
+            <label className="label">
+              <span className="label-text">Photo Url</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="url"
+                name="img"
+                placeholder="Enter photo-URL"
+                className="input input-bordered w-full "
+              />
+            </label>
           </div>
         </div>
 
