@@ -48,6 +48,7 @@ const User = () => {
               <th>ID</th>
               <th>Email</th>
               <th>Created-Time</th>
+              <th>Last-Logged</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -57,7 +58,9 @@ const User = () => {
                 <th>1</th>
                 <td>{user._id}</td>
                 <td>{user.email}</td>
+
                 <td>{user.createdAt}</td>
+                <td>{user.lastLogAt}</td>
                 <td>
                   <button
                     className="bg-red-700 hover:bg-red-800 py-2 px-2 text-white"
