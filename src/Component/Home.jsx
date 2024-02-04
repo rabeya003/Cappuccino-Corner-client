@@ -1,13 +1,15 @@
 import { useLoaderData } from "react-router-dom";
-import "./App.css";
-import CoffeeCard from "./Component/CoffeeCard";
-import { useState } from "react";
+// import "./App.css";
 
-function App() {
+import { useState } from "react";
+import CoffeeCard from "./CoffeeCard";
+
+const Home = () => {
   const loadedCoffees = useLoaderData();
   const [coffees, setCoffees] = useState(loadedCoffees);
   return (
     <div className="m-20">
+      {/* <Header></Header> */}
       <h1 className="text-6xl my-20 text-center text-purple-700">
         Hot Cold Coffee {coffees.length}
       </h1>
@@ -25,6 +27,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Home;

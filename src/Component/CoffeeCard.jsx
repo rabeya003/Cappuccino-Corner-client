@@ -59,12 +59,12 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
         </div>
         <div className="card-actions justify-end">
           <div className="join join-vertical gap-4 space-y-4">
-            <button className="btn text-white  bg-blue-500 hover:bg-blue-700">
+            <button className="btn text-white  bg-yellow-600 hover:bg-yellow-700">
               View
             </button>
             <button
               // onClick={handleChange}
-              className="btn bg-green-400 hover:bg-green-700 text-white"
+              className="btn bg-black hover:bg-gray-700 text-white"
             >
               <Link to={`updateCoffee/${_id}`}> Edit</Link>
             </button>

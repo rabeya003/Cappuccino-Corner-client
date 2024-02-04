@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const { creatUser } = useContext(AuthContext);
+  const nevigate = useNavigate();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -11,10 +13,26 @@ const Signup = () => {
     const password = e.target.password.value;
     creatUser(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        console.log(result.user);
+        const createdAt = result.user?.metadata?.creationTime;
+        const user = { email, createdAt: createdAt };
+        fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              toast.success("Sucessfully posted data in database");
+            }
+          });
         e.target.reset();
         toast.success("User Create Successfully");
+        nevigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
