@@ -17,7 +17,7 @@ const Login = () => {
         const lastLogAt = result.user?.metadata?.lastSignInTime;
         const user = { email, lastLogAt: lastLogAt };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://coffee-store-server-eight-psi.vercel.app/users", {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
